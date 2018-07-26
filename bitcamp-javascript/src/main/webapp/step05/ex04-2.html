@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>navigator 객체 - GEO Location </h1>
+
+<script>
+"use strict"
+//window.navigator
+// => 웹브라우저를 다루는 객체이다.
+//console.log(navigator.geolocation.getCurrentPosition());
+
+var pos = navigator.geolocation.getCurrentPosition((pos)=>{
+    console.log("22222222222222222")
+    console.log(pos.coords.latitude, pos.coords.longitude)
+});
+console.log("111111111111111")
+/* function displayLocation(position){
+    console.log(pos.coords.latitude, pos.coords.longitude)
+};
+ */</script>
+
+
+</body>
+</html>

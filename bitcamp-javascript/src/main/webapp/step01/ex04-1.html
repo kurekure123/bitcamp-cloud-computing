@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>strict 모드</title>
+</head>
+<body>
+<h1>변수 선언 - 범위</h1>
+<script>
+"use strict"
+// var a;
+
+var a;// 한번 변수를 선언하면 다음 scipt 태그에서도 사용할 수 있다.
+ a = 100; //실행 오류
+ console.log(a);
+</script>
+
+<script type="text/javascript">
+console.log(a);
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+button{
+    margin : 20px;
+    height : 30px;
+}
+div[id^='d1'] {
+    margin : 20px;
+    border : 1px solid black;
+}
+div[id^='d11'] {
+    margin : 20px;
+    border : 1px solid red;
+}
+div[id^='d12'] {
+    margin : 20px;
+    border : 1px solid blue;
+}
+
+</style>
+</head>
+<body>
+<h1>이벤트 전달 단계 - target 단계에서 리스너가 호출되게 하기 </h1>
+
+<div id="d1">d1
+    <div id="d11">d11
+        <button id="btn1">버튼1</button>
+        <button id="btn2">버튼2</button>
+    </div>
+    <div id="d12">d12
+        <button id="btn3">버튼3</button>
+        <button id="btn4">버튼4</button>
+    </div>
+</div>
+<script>
+"use strict"
+
+// capture 단계에서 리스너가 호출도록 하려면,
+// onxxx = function(){} 방식으로는 처리할 수 없다.
+//addEventListener()를 호출할 때만 가능하다.
+// 방법 :
+// e.addEventListener("이밴트명", function(){}, 캡쳐여부)
+
+d1.onclick = function(){console.log("d1")};
+d11.onclick = function(){console.log("d11")};
+d12.onclick = function(){console.log("d12")};
+
+btn1.onclick = function(event){
+    //target 단계에서 리스너가 호출되면
+    // 조상태그로 버블링 하지 않도록 설계하면 된다.
+    // 다음 메서드를 리스너 호출이 끝나기 전까지 실행하면 된다.
+    // 즉 처음이나 마지막 어디에 위치하더라도 상관없다.
+    // 왜? 이벤트 객체에 버블링 단계에서 호출되지 않도록 설정했기 때문이다.
+    // 조상들은
+    
+    event.stopPropagation(); // 버블링을 먼추는 명령어
+    console.log("btn1")
+    };
+btn2.onclick = function(){console.log("btn2")};
+btn3.onclick = function(){console.log("btn3")};
+btn4.onclick = function(){console.log("btn4")};
+
+</script>
+
+
+</body>
+</html>

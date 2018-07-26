@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체 생성-  같은 종류의 객체를 여러개 생성하기 </title>
+
+<script>
+"use strict"
+
+var obj1= new Object();
+
+//프로퍼티 추가 문법 1)
+//객체명.["프로퍼티명"] = 값
+//
+var s1={
+   name:"홍길동",
+   kor:100,
+   eng:90,
+   math:80,
+   sum(){return this.kor+ this.eng + this.math},
+   aver(){return this.sum()/3}
+};
+
+// 프로퍼티 명에 공백이나 특수문자 없을시 굳이 " " 필요 없음
+var s2={
+   name:"임꺾정",
+   kor:90,
+   eng:90,
+   math:80,
+   sum(){return this.kor+ this.eng + this.math},
+   aver(){return this.sum()/3}
+    
+}
+
+var s3={
+   name:"유관순",
+   kor:80,
+   eng:8,
+   math:80,
+   sum(){return this.kor+ this.eng + this.math},
+   aver(){return this.sum()/3}
+    
+}
+
+console.log(s1.name, s1.sum(), s1.aver);
+console.log(s2.name, s2.sum(), s2.aver);
+console.log(s3.name, s3.sum(), s3.aver);
+</script>
+
+</body>
+</html>

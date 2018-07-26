@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체 프로퍼티 - 함수프로퍼티 추가하기 </title>
+
+<script>
+"use strict"
+
+var obj1 = new Object();
+obj1.result = 0;
+obj1.plus = function(value){
+    this.result +=value;
+};
+// 자바에서는 this 가 생략 가능하지만 자바스크립트에서 생략하면 로컬 변수를 뜻함
+obj1.minus = function(value){
+    this.result -=value;
+};
+var obj2={
+   result:0,
+   plus:function(value){this.result += value;},
+   minus:function(value){this.result -= value;}
+}
+
+obj1.plus(100);
+obj1.plus(50);
+obj1.plus(70);
+
+obj2.minus(10);
+obj2.minus(5);
+obj2.minus(7);
+
+console.log(obj1.result, obj2.result)
+
+
+
+</script>
+
+</body>
+</html>

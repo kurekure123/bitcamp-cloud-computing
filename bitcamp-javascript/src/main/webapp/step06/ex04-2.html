@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+img {
+    height: 100px;
+}
+</style>
+</head>
+<body>
+<h1>DOM API - 자식태그 제거하기 </h1>
+<div id="d1">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsnCjx6R_NHrLHiTOU5XyFMgSt9d1H5HKJ9KgvWFQ_qvMMSKRXeg" />
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVrFyAzXBMsoObmStwWUPHliR2PnDcna8Jqx6JJVe0CoAFmHsg" />
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN2T-tKW3vuW8NqV9GbDjlfamZJrOdjOoH77Zyk_JGON5FdDnY" />
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRENMRAkQqEGODSl3QojqGHhHlAtbD54mu-a5MfRqr5xqeVKD0tQw" />
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOJNytsokZSBdnlQIm1XgMx9XlN9JU_OVLsr9kyiWwwX42nE_P" />
+</div>
+
+<script>
+"use strict"
+
+
+var tid = setInterval(() => {
+    var e = document.querySelector("#d1 > img:first-child");
+    
+    if (e == null) {
+        clearInterval(tid);
+        return;
+    }
+    
+    // d1 태그에 막내 자식 태그를 추가한다.
+    d1.removeChild(e);
+}, 2000);
+
+
+
+</script>
+
+
+</body>
+</html>

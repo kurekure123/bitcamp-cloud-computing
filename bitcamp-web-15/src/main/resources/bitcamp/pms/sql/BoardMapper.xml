@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.pms.dao.BoardDao">
+
+    <!-- 연결정보 미리 정리 -->
+    <!--컬럼명과 객체의 정보를 연결한다.  -->
+  <resultMap type="Board" id="BoardMap">
+    <id column="bno" property="no" /> <!-- 프라이머리 키의 경우 id 태그로 설정하여야 함-->
+  </resultMap>
+    
+    <!--resultType 이 아니라 resultMap  -->
+  <select id="selectList" resultMap="BoardMap" parameterType="map" >
+    select bno,titl,cdt from pms2_board
+     <if test="startIndex != null and pageSize != null">
+       limit #{startIndex}, #{pageSize}
+     </if>
+  </select>
+  
+<!-- sql id 값에 맞는  겟터셋터가 있다면 자동으로 연결됨, 아니라면 sql문에서 id 값을 변경해줘야 함 // as 문  as 는 생략가능  -->
+   <select id="selectOne" resultMap="BoardMap" parameterType="int">
+       select bno,titl,cont,cdt from pms2_board where bno=#{no}
+   </select>
+ 
+   <update id="update" parameterType="Board">
+       update pms2_board set titl=#{titl}, cont=#{cont}, cdt=now() where bno=#{no}
+   </update>
+ 
+   <delete id="delete" parameterType="int">
+       delete from pms2_board where bno like #{no}
+   </delete>
+   
+   <insert id="insert" parameterType="Board">
+       insert into pms2_board(titl,cont,cdt) values(#{titl},#{cont},now())
+   </insert>
+</mapper>

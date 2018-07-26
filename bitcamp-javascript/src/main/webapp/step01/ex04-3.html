@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>strict 모드</title>
+</head>
+<body>
+<h1>변수 선언 - 객체의 변수에 값 넣기</h1>
+<script>
+"use strict"
+window.a = 100;
+window["b"] =200;
+window['c'] = 300;
+
+ console.log(a); 
+ console.log(b); 
+ console.log(c); 
+ 
+ //점 (.) 을 사용할 떄는 변수 이름에 공백이나 특수 문자를 넣을 수 없다.
+ //window.first-name = "길동" // 오류
+ //window.first name = "길동" // 오류
+ //window.first^^name = "길동" // 오류
+ //window.1stName = "길동" // 오류, 일반 변수명으로 숫자를 먼저 쓸수 없다.
+ 
+ // 그러나 대괄호[] 를 사용하면 모두 다 사용가능하다.
+ window["first-name"] = "길동"; // ok
+ window["first name"] = "길동"; // ok
+ window["first^^name"] = "길동"; // ok
+ window["1stName"] = "길동"; // ok
+  
+ 
+console.log( window["first-name"]);
+console.log( window["first name"]);
+console.log( window["first^^name"]);
+console.log( window["1stName"]);
+ 
+</script>
+</body>
+</html>

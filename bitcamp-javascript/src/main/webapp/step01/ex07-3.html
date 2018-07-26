@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<h1>기타 변수 - let 변수와 블록</h1>
+<script>
+"use strict"
+
+var a = 100;
+{
+	var a = 200; // a 는 블록 밖에 선언된 a를 덮어 쓴다.
+}
+console.log(a);
+
+let b = 1000;
+{
+    let b = 2000; // 이 블록에서만 사용 될 수 있는 새 변수를 선언한다. (블록 밖으로 나가면 원래대로 돌아감)
+    console.log(b);
+}
+console.log(b);
+
+//let 문법은 (자바처럼)블록에 제한되는 로컬 변수를 만들 수 있다.
+// 왜 ? 기존의 var를 let 과 같은 기능으로 만들면 안되는가?
+// => 기존의 var 작동 방식을 변경할 시 기존에 var 로 작성한 모든 웹페이지를 먹통으로 만든다.
+// 즉 기존의 모든 웹페이지를 바꿔야한다.
+</script>
+</body>
+</html>

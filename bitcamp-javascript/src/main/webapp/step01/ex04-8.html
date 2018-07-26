@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<h1>변수 선언 -로컬 변수 </h1>
+<script>
+"use strict"
+
+// 자바스크립트의 로컬 변수는 오직 함수 안에 선언된 변수이다.
+var a = 100;
+
+//자바스크립트는 변수를 중복 선언해도 오류가 아니다?
+// wht? 변수 이름은 window 객체에 값을 넣는 key이기 때문이다.
+HashMap map = new MashMap();
+map.put("a", 100); // 맵 객체에 a 라는 이름으로 값을 넣은 후
+map.put("a", "hello"); //도 같은 이름으로 다른값을 넣을 수 있지 않은가.
+
+		
+function f(){
+    console.log("f() : ", a); 
+    
+    console.log("글로벌 변수", window.a)
+    }
+    
+f();
+
+// 결론
+// 자바스크립트는 오직 함수 밖에 선언된 글로벌 변수와
+// 함수 안에 선언된 로컬 변수로만 구성된다.
+ 
+</script>
+</body>
+</html>
