@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>태그의 기본 행위를 막기- form의 submit event</h1>
+<!--Form Item의 아이디, 나이, 전화 -->
+<form id="form1" action="http://www.daum.net" >
+	*이름 : <input id="fiName" type="text" name="name"/> <br>
+	*나이 : <input id="fiAge" type="number" name="age"/> <br>
+	전화 : <input id="fiTel" type="text" name="tel"/> <br>
+	<button>등록</button><br>
+	<!-- <button type = "submit"></button> -->
+</form>
+
+<script>
+"use strict"
+
+var e = document.querySelector("#form1")
+//console.log(e); // 우선 경로를 확인하고 움직이자 
+
+// button 태그의 type 기본 값은 submit 이다.
+// 따라서 type을 지정하지 않으면 submit 이기 때문에 조심하라
+
+ form1.onsubmit = function(){
+     if(fiName.value.length ==0 || fiAge.value.length == 0){
+         e.preventDefault();
+         alert("필수 입력 항목을 입력해주세요");//윈도위 객체의 alert() 이지만 윈도우 객체 생략 가능 window.alert();
+         return false;
+         }
+     return true;
+ }
+</script>
+
+
+</body>
+</html>

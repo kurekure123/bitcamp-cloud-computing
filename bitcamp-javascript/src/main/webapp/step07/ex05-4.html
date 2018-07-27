@@ -5,9 +5,9 @@
 <title>자바스크립트</title>
 </head>
 <body>
-<h1>태그의 기본 행위를 막기- form의 submit 버튼</h1>
+<h1>태그의 기본 행위를 막기- form의 submit event</h1>
 <!--Form Item의 아이디, 나이, 전화 -->
-<form action="http://www.daum.net" onsubmit="">
+<form id="form1" action="http://www.daum.net" onsubmit="return checkValidate()" >
 	*이름 : <input id="fiName" type="text" name="name"/> <br>
 	*나이 : <input id="fiAge" type="number" name="age"/> <br>
 	전화 : <input id="fiTel" type="text" name="tel"/> <br>
@@ -17,16 +17,28 @@
 <script>
 "use strict"
 
-var e = document.querySelector("form input[type='submit']")
+var e = document.querySelector("#form1")
 //console.log(e); // 우선 경로를 확인하고 움직이자 
-e.onclick = function(e){
+
+
+/* e.onclick = function(e){
     if(fiName.value.length ==0 || fiAge.value.length == 0){
         e.preventDefault();
         alert("필수 입력 항목을 입력해주세요");//윈도위 객체의 alert() 이지만 윈도우 객체 생략 가능 window.alert();
         return 
     };
 };
-
+ */
+ 
+ // onsubmit의 리턴 값이 true 이면 입렵 폼의 action을 실행하고,
+ // false 이면 실행하지 않는 특징을 이용한다.
+ form1.onsubmit = function checkValidate(){
+    if(fiName.value.length ==0 || fiAge.value.length == 0){
+        alert("필수 입력 항목을 입력해주세요");//윈도위 객체의 alert() 이지만 윈도우 객체 생략 가능 window.alert();
+        return false;
+        }
+    return true;
+ }
 </script>
 
 
