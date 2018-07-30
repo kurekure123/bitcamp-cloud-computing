@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,29 +16,27 @@ import bitcamp.pms.service.MemberService;
 
 @RestController
 @RequestMapping("/member")
-public class MemberController{
+public class MemberController {
 
-@Autowired MemberService memberService;
+    @Autowired MemberService memberService;
     
     @RequestMapping("list")
     public Object list(
             @RequestParam(defaultValue="1") int page, 
-            @RequestParam(defaultValue="3") int size
-            ) throws Exception {
+            @RequestParam(defaultValue="3") int size) throws Exception {
         
         if (page < 1) page = 1;
         if (size < 1 || size > 20) size = 3;
         
         List<Member> list = memberService.list(page, size);
         
-        HashMap<String, Object> data =new HashMap<>();
-        
+        HashMap<String,Object> data = new HashMap<>();
         data.put("list", list);
         data.put("page", page);
         data.put("size", size);
         data.put("totalPage", 
                 memberService.getTotalPage(size));
-        
+
         return data;
     }
     
@@ -49,39 +45,43 @@ public class MemberController{
     }
     
     @PostMapping("add")
-    public String add(Member member) throws Exception {
-        
-        memberService.add(member);
-        return "redirect:list";
+    public Object add(Member member) throws Exception {
+        HashMap<String,Object> result = new HashMap<>();
+        	memberService.add(member) ;
+            result.put("status", "sucess");
+        return result;
     }
     
     @RequestMapping("delete")
-    public String delete(String id) throws Exception {
-        
-        memberService.delete(id); 
-        return "redirect:list";
-       
+    public Object delete(String id) throws Exception {
+        HashMap<String,Object> result = new HashMap<>();
+        if (memberService.delete(id) == 0) {
+            result.put("status", "fail");
+            result.put("error", "해당 아이디가 없습니다.");
+        } else {
+            result.put("status", "success");
+        }
+        return result;
     }
     
     @RequestMapping("update")
-    public String update(Member member) throws Exception {
-        
+    public Object update(Member member) throws Exception {
+        HashMap<String,Object> result = new HashMap<>();
         if (memberService.update(member) == 0) {
-            return "member/updatefail";
+            result.put("status", "fail");
+            result.put("error", "해당 아이디가 없습니다.");
         } else {
-            return "redirect:list";
+            result.put("status", "sucess");
         }
+        return result;
     }
     
     @RequestMapping("view/{id}")
-    public Object view(
-            @PathVariable String id) throws Exception {
-        
-    	HashMap<String, Object> data = new HashMap<>();
+    public Object view(@PathVariable String id) throws Exception {
+        HashMap<String,Object> data = new HashMap<>();
         data.put("member", memberService.get(id));
         return data;
     }
 
 }
-
 

@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>멤버 목록5</h1>
-<p><a href='form'>새회원</a></p>
+<p><a href='view.html'>새회원</a></p>
 
 <table id="eListTable" border='1'>
 <thead>
@@ -22,11 +22,11 @@
 </div>
 
 
-<script src="../js/common.js"></script>
+<script src="../js/bit.js"></script>
 <script>
 "use strict"
-var {page, size} = parseQuery(location.href);
-let tbody = document.querySelector('#eListTable > tbody'); 
+var {page, size} = $.parseQuery(location.href);
+let tbody = $('#eListTable > tbody'); 
 let data = null;
 if (page != undefined && size != undefined) {
     loadList(page, size);
@@ -51,11 +51,11 @@ function loadList(page, size) {
         data = JSON.parse(xhr.responseText);
         tbody.innerHTML = '';
         for (var item of data.list) {
-            var tr = document.createElement("tr");
-            tr.innerHTML = 
-                `<td><a href='#' data-id='${item.id}' onclick='clickViewLink(event)'>${item.id}</a></td>
-                <td>${item.email}</td>`;
-            tbody.appendChild(tr);
+            $("<tr>")
+              .html(`<td><a href='#' data-id='${item.id}' 
+                onclick='clickViewLink(event)'>${item.id}</a></td>
+                <td>${item.email}</td>`)
+              .appendTo(tbody);
         }
         
         ePageNo.innerHTML = data.page;

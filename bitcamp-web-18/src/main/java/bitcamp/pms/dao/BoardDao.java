@@ -1,21 +1,16 @@
 package bitcamp.pms.dao;
 
-public class BoardDao {
-	static {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    String jdbcUrl;
-    String username;
-    String password;
-    
-	public BoardDao(String jdbcUrl, String username, String password) {
-        this.jdbcUrl = jdbcUrl;
-        this.username = username;
-        this.password = password;
-	}
+import java.util.List;
+import java.util.Map;
+
+import bitcamp.pms.domain.Board;
+
+public interface BoardDao{
+
+	List<Board> selectList(Map<String, Object> params); 
+    Board selectOne(int no);
+    int update(Board board);
+    int delete(int no);
+    int insert(Board board);
+    int countAll();
 }

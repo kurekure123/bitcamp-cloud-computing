@@ -1,18 +1,16 @@
 package bitcamp.pms.domain;
 
-import java.sql.Date;
-
 public class Board {
-	protected int bno;
+	protected int no;
 	protected String titl;
 	protected String cont;
 	protected String cdt;
 	
-	public int getBno() {
-		return bno;
+	public int getNo() {
+		return no;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+	public void setNo(int no) {
+		this.no = no;
 	}
 	public String getTitl() {
 		return titl;
