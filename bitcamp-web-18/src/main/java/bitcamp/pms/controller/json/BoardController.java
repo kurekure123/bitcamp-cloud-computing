@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +48,7 @@ public class BoardController {
 	public Object view(@PathVariable int no) throws Exception{
 		HashMap<String, Object> data = new HashMap<>();
 		data.put("board", boardService.get(no));
+		System.out.println(boardService.get(no));
 		return data;
 	} 
 	
@@ -62,7 +64,7 @@ public class BoardController {
 		return result;
 	}
 
-	@RequestMapping("add")
+	@PostMapping("add")
 	public Object add(Board board) throws Exception{
 		 HashMap<String,Object> result = new HashMap<>();
 		 boardService.add(board);

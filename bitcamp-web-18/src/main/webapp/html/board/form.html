@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 등록폼</title>
+<script type="text/javascript">
+  request.setCharacterEncoding("utf-8");
+</script>
+<script type="text/javascript" src="../../se2/smarteditor2-master/workspace/js/service/HuskyEZCreator.js" charset="UTF-8"> </script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 </head>
 <body>
 
@@ -10,8 +15,9 @@
 <form>
 제목: <input type="text" id="eTitle" name="title"><br>
 내용: <textarea id="eContent" name="content" rows="10" cols="60"></textarea><br>
-<button>등록</button>
+<button id="eAddBtn">등록</button>
 </form>
+
 <script type="text/javascript">
 
 var oEditors = [];
@@ -19,9 +25,9 @@ nhn.husky.EZCreator.createInIFrame({
 
     oAppRef: oEditors,
 
-    elPlaceHolder: "content",
+    elPlaceHolder: "eContent",
 
-    sSkinURI: "../se2/smarteditor2-master/workspace/SmartEditor2Skin.html",
+    sSkinURI: "../../se2/smarteditor2-master/workspace/SmartEditor2Skin.html",
     
     fCreator: "createSEditor2",
         
@@ -32,7 +38,7 @@ function submitContents(elClickedObj) {
 
     // 에디터의 내용이 textarea에 적용된다.
 
-    oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+    oEditors.getById["eContent"].exec("UPDATE_CONTENTS_FIELD", []);
 
  
 
@@ -50,6 +56,26 @@ function submitContents(elClickedObj) {
         }
     }
 $("#save").click(function(){ oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []); $("#add").submit(); });
+</script>
+
+<script>
+eAddBtn.onclick = function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        if (xhr.status !== 200) {
+            alert('서버에서 오류 발생!');
+            return;
+        }
+        location.href = 'list.html';
+    };
+    
+    xhr.open('POST', '../../json/board/add', true);
+    xhr.setRequestHeader('Content-Type', 
+            'application/x-www-form-urlencoded');
+    xhr.send(`titl=${eTitle.value}&cont=${eContent.value}`);
+};
 </script>
 </body>
 </html>

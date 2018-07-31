@@ -23,6 +23,62 @@
 <script src="../js/bit.js"></script>
 <script>
 "use strict"
+var {page, size} = $.parseQuery(location.href);
+let tbody = $('#eListTable > tbody');
+let data = null;
+if (page != undefined && size != undefined){
+    loadList(page,size);
+}else {
+    loadList(1,3);
+}
+ePrevBtn.onclick = function() {
+    loadList(data.page - 1, data.size);
+};
+eNextBtn.onclick = function() {
+    loadList(data.page + 1, data.size);
+};
+
+function loadList(page,size){
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState < 4) return;
+        if(xhr.status !== 200){
+            alert("서버에서 오류 발생");
+            return;
+        }
+        data = JSON.parse(xhr.responseText);
+        tbody.innerHTML = '';
+        for (var item of data.list){
+            console.log(item.no + ' / ' + item.titl + ' / ' + item.cdt + ' / ' + item.cont)
+            $("<tr>")
+            .html(`<td><a href='#' data-id='${item.no}' 
+              onclick='clickViewLink(event)'>${item.no}</a></td>
+              <td>${item.titl}</td>
+              <td>${item.cdt}</td>`)
+            .appendTo(tbody);
+        }
+        ePageNo.innerHTML = data.page;
+        if(data.page <= 1)
+            ePrevBtn.setAttribute('disabled', '');
+        else
+            ePrevBtn.removeAttribute('disabled');
+        
+        if(data.page >= data.totalPage)
+            eNextBtn.setAttribute('disabled', '');
+        else 
+            eNextBtn.removeAttribute('disabled');
+    };
+    xhr.open('GET', 
+            `../../json/board/list?page=${page}&size=${size}`, 
+            true);
+    xhr.send();
+}
+function clickViewLink(event){
+    event.preventDefault();
+    var no = event.currentTarget.getAttribute('data-id');
+    location.href = `view.html?no=${no}&page=${data.page}&size=${data.size}`;
+}
 </script>
 </body>
 </html>

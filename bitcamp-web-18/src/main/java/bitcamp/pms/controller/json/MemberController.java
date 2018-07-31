@@ -48,7 +48,7 @@ public class MemberController {
     public Object add(Member member) throws Exception {
         HashMap<String,Object> result = new HashMap<>();
         	memberService.add(member) ;
-            result.put("status", "sucess");
+            result.put("status", "success");
         return result;
     }
     
@@ -71,7 +71,7 @@ public class MemberController {
             result.put("status", "fail");
             result.put("error", "해당 아이디가 없습니다.");
         } else {
-            result.put("status", "sucess");
+            result.put("status", "success");
         }
         return result;
     }

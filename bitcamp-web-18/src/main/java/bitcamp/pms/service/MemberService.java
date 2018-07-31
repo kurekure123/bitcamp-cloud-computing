@@ -36,6 +36,7 @@ public class MemberService {
     //@Transactional() // => 애노테이션 대신 xml 태그로 지정할 수 있다.
     public int update(Member member) {
         int count = memberDao.update(member);
+        System.out.println("count는"+count);
         
       /*  if (count != 100)
             throw new RuntimeException("일부로 예외 발생!");*/

@@ -1,4 +1,4 @@
-function parseQuery(url){
+$.parseQuery = function(url){
     var paramMap = {};
 
  // qs = queryString의 약자
@@ -12,4 +12,4 @@ function parseQuery(url){
  }
  
  return paramMap;
-}
+};

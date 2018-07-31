@@ -22,6 +22,7 @@ public class BoardService {
 	}
 	
 	public Board get(int no) {
+		System.out.println("서비스 겟넘버 : "+boardDao.selectOne(no));
 		return boardDao.selectOne(no);
 	}
 	
