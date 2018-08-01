@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Tic Tac Toe</title>
+<style>
+.p-2 {
+    height: 100px;
+    width: 100px;
+    border : 3px solid #0056b3;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <label for="size">사이즈 결정</label>
+    <input id="size" type="text" placeholder="정방형으로만 생성"/>
+    <button type="button" onclick="createSize()">Send</button>
+</div>    
+	<div id="game" class="container">
+
+	</div>
+	<div align="left">
+		<span id='turn'>Player X</span>
+	</div>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script>
+	// 정방형으로 구성하려하므로 size값만으로 행과,열 구성 가능
+	var size = 0;
+	var totalSize = size * size
+	   function createSize(){
+	       size = $('#size').val();
+	       if($('#size').val() == '' && $('#size').val() <= 2){
+	           size = 3;
+	           alert("minmum size 는 3입니다.");
+	           $('#game').html('');
+	       }
+	       for(var i = 1;  i <= size; i++){
+               $('#game').append('<div id="row'+i+'" class="d-flex flex-row"></div>')
+               for(var j = 1; j <= size; j++ ){
+               $('#row'+i).append('<div id="column'+i+j+'" class="p-2 bg-primary"></div>');
+               
+               }
+           }
+	       console.log(size);
+	       $(document).ready(function(){
+	           $(".p-2").click(function(){
+	             var count = 0;
+	             count++
+	             var findId = $(this).attr('id');
+	           });
+	       });
+	   }
+	   
+	</script>
+</body>
+</html>
