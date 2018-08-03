@@ -32,31 +32,52 @@
 	<script>
 	// 정방형으로 구성하려하므로 size값만으로 행과,열 구성 가능
 	var size = 0;
-	var totalSize = size * size
+	var totalSize =0;
 	   function createSize(){
+	       $('#game').html('');
 	       size = $('#size').val();
-	       if($('#size').val() == '' && $('#size').val() <= 2){
+	       if($('#size').val() == '' || $('#size').val() <= 2){
 	           size = 3;
 	           alert("minmum size 는 3입니다.");
 	           $('#game').html('');
-	       }
-	       for(var i = 1;  i <= size; i++){
-               $('#game').append('<div id="row'+i+'" class="d-flex flex-row"></div>')
-               for(var j = 1; j <= size; j++ ){
-               $('#row'+i).append('<div id="column'+i+j+'" class="p-2 bg-primary"></div>');
-               
+	           for(var i = 1;  i <= size; i++){
+                   $('#game').append('<div id="row'+i+'" class="d-flex flex-row"></div>')
+                   for(var j = 1; j <= size; j++ ){
+                   $('#row'+i).append('<div id="column'+i+j+'" class="p-2 bg-primary"></div>');
+                   
+                   }
                }
-           }
-	       console.log(size);
+	       }else{
+	           for(var i = 1;  i <= size; i++){
+                   $('#game').append('<div id="row'+i+'" class="d-flex flex-row"></div>')
+                   for(var j = 1; j <= size; j++ ){
+                   $('#row'+i).append('<div id="column'+i+j+'" class="p-2 bg-primary"></div>');
+                   
+                   }
+               }
+	       }
+
 	       $(document).ready(function(){
-	           $(".p-2").click(function(){
 	             var count = 0;
-	             count++
+	             totalSize = size * size;
+	           $(".p-2").click(function(){
 	             var findId = $(this).attr('id');
+	             if(doubleClickFlag == true){
+	                 count++;
+	             }
+	             if(count > totalSize){
+	                 count = 1;
+	             }
 	           });
 	       });
 	   }
-	   
+       console.log(size);
+       
+       var doubleClickFlag = false;
+     
+
+   
+   
 	</script>
 </body>
 </html>

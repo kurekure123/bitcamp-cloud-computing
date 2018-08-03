@@ -20,29 +20,30 @@ var size = 3,
 function init() {
   var board = document.createElement('table');
   board.setAttribute('border', 1);
-  board.setAttribute('cellspacing', 0);
+  board.setAttribute('tablespacing', 0);
 
   var identifier = 1;
   for (var i = 0; i < size; i++) {
     var row = document.createElement('tr');
     board.appendChild(row);
     for (var j = 0; j < size; j++) {
-      var cell = document.createElement('td');
-      cell.setAttribute('height', 120);
-      cell.setAttribute('width', 120);
-      cell.setAttribute('align', 'center');
-      cell.setAttribute('valign', 'center');
-      cell.classList.add('col' + j, 'row' + i);
+      var table = document.createElement('td');
+      table.setAttribute('height', 120);
+      table.setAttribute('width', 120);
+      table.setAttribute('align', 'center');
+      table.setAttribute('valign', 'center');
+      table.classList.add('col' + j, 'row' + i);
       if (i == j) {
-        cell.classList.add('diagonal0');
+        table.classList.add('diagonal0');
       }
       if (j == size - i - 1) {
-        cell.classList.add('diagonal1');
+        table.classList.add('diagonal1');
       }
-      cell.identifier = identifier;
-      cell.addEventListener('click', set);
-      row.appendChild(cell);
-      boxes.push(cell);
+      table.identifier = identifier;
+      console.log(identifier);
+      table.addEventListener('click', set);
+      row.appendChild(table);
+      boxes.push(table);
       identifier += identifier;
     }
   }
@@ -70,7 +71,7 @@ function startNewGame() {
  * Check if a win or not
  */
 function win(clicked) {
-  // Get all cell classes
+  // Get all table classes
   var memberOf = clicked.className.split(/\s+/);
   for (var i = 0; i < memberOf.length; i++) {
     var testClass = '.' + memberOf[i];
