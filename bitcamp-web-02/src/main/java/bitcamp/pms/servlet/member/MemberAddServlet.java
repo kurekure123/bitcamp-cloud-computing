@@ -1,4 +1,4 @@
-package bitcmap.pms.servlet.member;
+package bitcamp.pms.servlet.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;

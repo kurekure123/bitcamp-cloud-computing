@@ -1,11 +1,11 @@
-package bitcmap.pms.servlet.member;
+package bitcamp.pms.servlet.classroom;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,14 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet("/member/delete")
-public class MemberDeleteServlet extends HttpServlet{
-	@Override
-    protected void doGet(
+@WebServlet("/classroom/add")
+public class ClassroomAddServlet extends HttpServlet {
+    @Override
+    protected void doPost(
             HttpServletRequest request, 
-            HttpServletResponse response) throws ServletException, IOException {
+            HttpServletResponse response) 
+                    throws ServletException, IOException {
         
-        String id = request.getParameter("id");
+        request.setCharacterEncoding("UTF-8");
         
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -31,32 +32,30 @@ public class MemberDeleteServlet extends HttpServlet{
         out.println("<head>");
         out.println("<meta charset='UTF-8'>");
         out.println("<meta http-equiv='Refresh' content='1;url=list'>");
-        out.println("<title>게시물 삭제</title>");
+        out.println("<title>강의 등록</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>게시물 삭제 결과</h1>");
+        out.println("<h1>강의 등록 결과</h1>");
         
         try {
-        	Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             try (
                 Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://13.209.99.58:3306/studydb",
-                    //jdbc.url=jdbc:mysql://13.209.99.58:3306/studydb
-                    "study", "1111");
+                        "jdbc:mysql://13.209.19.155:3306/studydb",
+                        "study", "1111");
                 PreparedStatement stmt = con.prepareStatement(
-                    "delete from pms2_member where mid=?");) {
-            		stmt.setString(1, id);
-	    			stmt.executeUpdate();
-	    			   
-	                if (stmt.executeUpdate() == 0) {
-	                    out.println("<p>해당 회원이 없습니다.</p>");
-	                } else {
-	                    out.println("<p>삭제하였습니다.</p>");
-	                }
-	    			}
-     
+                    "insert into pms2_classroom(titl,sdt,edt,room) values(?,?,?,?)");) {
+                
+                stmt.setString(1, request.getParameter("title"));
+                stmt.setDate(2, Date.valueOf(request.getParameter("startDate")));
+                stmt.setDate(3, Date.valueOf(request.getParameter("endDate")));
+                stmt.setString(4, request.getParameter("room"));
+                stmt.executeUpdate();
+            }
+            
+            out.println("<p>등록 성공!</p>");
         } catch (Exception e) {
-            out.println("<p>삭제 실패!</p>");
+            out.println("<p>등록 실패!</p>");
             e.printStackTrace(out);
         }
         out.println("</body>");
