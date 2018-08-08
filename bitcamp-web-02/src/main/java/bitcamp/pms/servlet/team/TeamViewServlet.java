@@ -40,7 +40,7 @@ public class TeamViewServlet extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             try (
                 Connection con = DriverManager.getConnection(
-                        "jdbc:mysql://13.209.19.155:3306/studydb",
+                        "jdbc:mysql://13.209.99.58:3306/studydb",
                         "study", "1111");
                 PreparedStatement stmt = con.prepareStatement(
                     "select dscrt, sdt, edt, max_qty from pms2_team where name=?");) {
