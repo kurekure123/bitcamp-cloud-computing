@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<meta charset='UTF-8'>
+<title>회원 가입</title>
+<style>
+.h-container{
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+}
+.h-div{
+    margin : 0 auto;
+    max-width: 300px;
+    margin-top : 15px;
+}
+.h-title{
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+}
+.header{
+    margin-top : 25px;
+}
+.center-position{
+    text-align: center;
+}
+.border-line{
+    width: 80%;
+    margin-top : 50px;
+    margin-left : auto;
+    margin-right : auto;
+    border-bottom: 1px solid #bcbcbc;
+}
+.center-block{
+    width : 100%;
+    padding : 10%;
+}
+</style>
+</head>
+<body>
+<div class="h-container">
+    <div class="center-block">
+    <form>
+		<div class="h-title h-div">
+		   로그인
+		</div>
+	   <div class="form-group h-div header">
+		  <label for="eEmail">이메일</label>
+		  <input type="text" class="form-control" id="eEmail" placeholder="example@test.com"/>
+		</div>
+        <div class="form-group h-div">
+          <label for="ePassword">암호</label>
+          <input type="text" class="form-control" id="ePassword" placeholder="..."/>
+        </div>
+        <div class="form-group h-div center-position">
+            <button id="loginBtn" onclick="login()" type="button" class="btn btn-primary">로그인</button>
+            <button onclick="moveAdd()" type="button" class="btn btn-primary ">회원가입</button>
+        </div>
+    </form>  
+		 <div class="border-line">
+		 </div>
+	</div>
+</div>
+  <!-- .container -->
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/popper.js/dist/umd/popper.min.js" ></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+function moveAdd(){
+    location.href = 'add.html';
+}
+function login(){
+    location.href = 'view.html';
+  /*   var email = $(eEmail).val()
+    var json = {
+         email : email,
+         password : $(ePassword).val()
+    } */
+    //});  
+}
+</script>
+</body>
+</html>
+    

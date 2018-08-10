@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<meta charset='UTF-8'>
+<title>회원 가입</title>
+<style>
+.h-container {
+	width: 100%;
+	min-height: 600px;
+	margin: 0 auto;
+}
+
+.h-div {
+	margin: 0 auto;
+	max-width: 300px;
+	margin-top: 15px;
+}
+
+.h-title {
+	font-weight: bold;
+	font-size: 36px;
+	text-align: center;
+}
+
+.header {
+	margin-top: 25px;
+}
+
+.center-position {
+	text-align: center;
+}
+
+.bottom-border {
+	border-bottom: 2px solid #bcbcbc;
+}
+
+.border-line {
+	width: 100%;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: 2px solid #bcbcbc;
+}
+
+.center-block {
+	width: 100%;
+	padding: 10%;
+}
+
+.nav-right {
+	width: 50%;
+	text-align: left;
+}
+
+.nav-left {
+	width: 50%;
+	text-align: right;
+}
+.left-bar{
+    margin-top : 15px;
+    border-right: 2px solid #bcbcbc;
+}
+
+</style>
+</head>
+<body>
+	<div class="h-container">
+		<div class="">
+			<div class="container bottom-border">
+				<ul class="nav">
+					<li class="nav-right"><h4>개인 명함 관리</h4></li>
+					<li class="nav-left"><a href="#">로그아웃</a></li>
+				</ul>
+			</div>
+			<div class="row">
+			<div class="col-sm-4 left-bar">
+			</div>
+			<div class="col-sm-8">
+				<form>
+					<div class="h-title h-div">로그인</div>
+					<div class="form-group h-div header">
+						<label for="eEmail">이메일</label> <input type="text"
+							class="form-control" id="eEmail" placeholder="example@test.com" />
+					</div>
+					<div class="form-group h-div">
+						<label for="ePassword">암호</label> <input type="text"
+							class="form-control" id="ePassword" placeholder="..." />
+					</div>
+					<div class="form-group h-div center-position">
+						<button id="loginBtn" onclick="login()" type="button"
+							class="btn btn-primary">로그인</button>
+						<button onclick="moveAdd()" type="button" class="btn btn-primary ">회원가입</button>
+					</div>
+				</form>
+				</div>
+				<div class="container border-line"></div>
+			</div>
+		</div>
+	</div>
+	<!-- .container -->
+
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../js/common.js"></script>
+
+</body>
+</html>

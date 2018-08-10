@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<meta charset='UTF-8'>
+<title>회원 가입</title>
+<style>
+.h-container{
+    width: 978px;
+    height: 600px;
+    margin: 0 auto;
+}
+.h-div{
+    margin : 0 auto;
+    max-width: 300px;
+    margin-top : 15px;
+}
+.h-title{
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+}
+.header{
+    margin-top : 25px;
+}
+.center-position{
+    text-align: center;
+}
+.border-line{
+    width: 80%;
+    margin-top : 50px;
+    margin-left : auto;
+    margin-right : auto;
+    border-bottom: 1px solid #bcbcbc;
+}
+.center-block{
+    width : 100%;
+    padding : 10%;
+}
+</style>
+</head>
+<body>
+<div class="h-container">
+    <div class="center-block">
+    <form>
+		<div class="h-title h-div">
+		      회원 가입
+		</div>
+	   <div class="form-group h-div header">
+		  <label for="email">이메일</label>
+		  <input type="text" class="form-control" id="eEmail" placeholder="example@test.com"/>
+		</div>
+		<div class="form-group h-div">
+          <label for="name">이름</label>
+          <input type="text" class="form-control" id="eName" placeholder="홍길동"/>
+        </div>
+        <div class="form-group h-div">
+          <label for="password">암호</label>
+          <input type="password" class="form-control" id="ePassword" placeholder="..."/>
+        </div>
+        <div class="form-group h-div center-position">
+            <button id="addBtn" type="button" class="btn btn-primary ">가입하기</button>
+        </div>
+		 <div class="border-line">
+		 </div>
+    </form> 
+    </div>
+</div>
+  <!-- .container -->
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/popper.js/dist/umd/popper.min.js" ></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+
+<script>
+var data = null;
+$(addBtn).click(function(){
+    
+    
+   $.post(serverApiAddr + '/json/member/add',{
+       email: $(eEmail).val(),
+       name: $(eName).val(),
+       password: $(ePassword).val()
+   },
+   function(data){
+       if(data != null){
+        alert(' 가입되었습니다.');   
+        location.href ='login.html'
+       }
+   },
+   'json')  
+});
+
+</script>
+
+</body>
+</html>
+    

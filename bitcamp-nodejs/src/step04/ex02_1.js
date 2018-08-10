@@ -1,4 +1,4 @@
-// 주제 : express 사용하기 - GET 파라미터 처리
+// 주제 : express 사용하기 - GET/POST 파라미터 처리
 
 // => express 모듈 로딩
 const express = require('express')
