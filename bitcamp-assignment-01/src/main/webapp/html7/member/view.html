@@ -7,14 +7,14 @@
 <title>회원 가입</title>
 <style>
 .h-container {
-	width: 100%;
+	width: 80%;
 	min-height: 600px;
 	margin: 0 auto;
 }
 
 .h-div {
 	margin: 0 auto;
-	max-width: 300px;
+	width: 80%;
 	margin-top: 15px;
 }
 
@@ -34,14 +34,16 @@
 
 .bottom-border {
 	border-bottom: 2px solid #bcbcbc;
+	margin-top: 25px;
 }
 
 .border-line {
 	width: 100%;
-	margin-top: 50px;
+	margin-top: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	border-bottom: 2px solid #bcbcbc;
+	margin-left: auto;
 }
 
 .center-block {
@@ -58,11 +60,29 @@
 	width: 50%;
 	text-align: right;
 }
-.left-bar{
-    margin-top : 15px;
-    border-right: 2px solid #bcbcbc;
+
+.left-bar {
+	margin-top: 15px;
+	border-right: 2px solid #bcbcbc;
 }
 
+.space {
+	margin-left: 20px;
+}
+
+.memo {
+	width: 80%;
+	margin-left: 20px;
+}
+
+.label-div {
+	width: 15%;
+	text-align: right;
+}
+
+.row {
+	margin: 0 auto;
+}
 </style>
 </head>
 <body>
@@ -74,29 +94,58 @@
 					<li class="nav-left"><a href="#">로그아웃</a></li>
 				</ul>
 			</div>
-			<div class="row">
-			<div class="col-sm-4 left-bar">
-			</div>
-			<div class="col-sm-8">
-				<form>
-					<div class="h-title h-div">로그인</div>
-					<div class="form-group h-div header">
-						<label for="eEmail">이메일</label> <input type="text"
-							class="form-control" id="eEmail" placeholder="example@test.com" />
+			<div class="container row">
+				<div class="col-sm-3 left-bar">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">@</span>
+						</div>
+						<input type="text" class="form-control" placeholder="Username">
 					</div>
-					<div class="form-group h-div">
-						<label for="ePassword">암호</label> <input type="text"
-							class="form-control" id="ePassword" placeholder="..." />
+					<div id="x">					
 					</div>
-					<div class="form-group h-div center-position">
-						<button id="loginBtn" onclick="login()" type="button"
-							class="btn btn-primary">로그인</button>
-						<button onclick="moveAdd()" type="button" class="btn btn-primary ">회원가입</button>
-					</div>
-				</form>
 				</div>
-				<div class="container border-line"></div>
+				<div class="col-sm-9">
+					<form>
+						<div class="h-title h-div" style="float: left;">이름</div>
+						<div style="float: right; margin-top: 15px;">
+							<button type="button" class="btn btn-primary">편집</button>
+						</div>
+						<div class="form-group h-div row">
+
+							<div class="label-div">휴대전화</div>
+							<div>
+								<p class="space" id="eCP">1</p>
+							</div>
+						</div>
+						<div class="form-group h-div header row">
+							<div class="label-div">일반 전화</div>
+							<div>
+								<p class="space" id="eHP">1</p>
+							</div>
+						</div>
+						<div class="form-group h-div header row">
+							<div class="label-div">팩스</div>
+							<div>
+								<p class="space" id="eFax">1</p>
+							</div>
+						</div>
+						<div class="form-group h-div header row">
+							<div class="label-div">이메일</div>
+							<div>
+								<p class="space" id="eEmail">1</p>
+							</div>
+						</div>
+						<div class="form-group h-div header row">
+							<div class="label-div">메모</div>
+							<div class="memo">
+								<textarea id="eMemo" style="width: 100%;" rows="10" cols="8"></textarea>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
+			<div class="container border-line"></div>
 		</div>
 	</div>
 	<!-- .container -->

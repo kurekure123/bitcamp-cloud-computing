@@ -42,10 +42,11 @@
 		insert into member(email, name, pwd)
 		values(#{email},#{name},password(#{password}))
 	</insert>
-
+       
 	<select id="countAll" resultType="int">
 		select count(*) from pms2_member
 	</select>
-	<select id="login" resultType="Member">
+	<select id="checkEmail" parameterType="String" resultType="Integer">
+	   select count(*) from member where email = #{value}
 	</select>
 </mapper>

@@ -1,5 +1,6 @@
 package bitcamp.pms.service;
 
+import java.io.Console;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,7 +48,11 @@ public class MemberService {
     public int delete(String id) {
         return memberDao.delete(id);
     }
-
+    
+    public int emailCheck(String email) {
+    	return memberDao.checkEmail(email);
+    }
+    
     public void add(Member member) {
         memberDao.insert(member);
     }
@@ -60,7 +65,4 @@ public class MemberService {
         return totalPage;
     }
 
-	public Object login(Member member) {
-		return memberDao.login(member);
-	}
 }

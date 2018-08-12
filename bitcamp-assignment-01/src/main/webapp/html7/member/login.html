@@ -52,10 +52,10 @@
 		</div>
         <div class="form-group h-div">
           <label for="ePassword">암호</label>
-          <input type="text" class="form-control" id="ePassword" placeholder="..."/>
+          <input type="password" class="form-control" id="ePassword" placeholder="..."/>
         </div>
         <div class="form-group h-div center-position">
-            <button id="loginBtn" onclick="login()" type="button" class="btn btn-primary">로그인</button>
+            <button id="loginBtn" type="button" class="btn btn-primary">로그인</button>
             <button onclick="moveAdd()" type="button" class="btn btn-primary ">회원가입</button>
         </div>
     </form>  
@@ -72,15 +72,27 @@
 function moveAdd(){
     location.href = 'add.html';
 }
-function login(){
-    location.href = 'view.html';
-  /*   var email = $(eEmail).val()
+
+var data = null;
+$(loginBtn).on('click', e=>{
+    alert('test')
+    var email = $('#eEmail').val();
     var json = {
-         email : email,
-         password : $(ePassword).val()
-    } */
-    //});  
-}
+           email : email ,
+           password : $('#ePassword').val()
+    }
+    $.ajax({
+        method : 'POST',
+        data : JSON.stringify(json),
+        dataType : 'json',
+        contentType : 'application/json',
+        success : x =>{
+            alert('섭세스' + x)
+        }
+    })
+});
+
+    
 </script>
 </body>
 </html>

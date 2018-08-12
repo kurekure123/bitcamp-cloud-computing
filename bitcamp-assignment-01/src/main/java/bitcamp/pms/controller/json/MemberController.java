@@ -2,12 +2,19 @@ package bitcamp.pms.controller.json;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,18 +54,15 @@ public class MemberController {
     
     @PostMapping("add")
     public Object add(Member member) throws Exception {
+    	int count = 0;
         HashMap<String,Object> result = new HashMap<>();
-/*        checker.setData1(member.getEmail());
-        map.put("checkId", new CountService() {
-			@Override
-			public int excute(Check checker) {
-				return mapper.idCheck(checker);
-			}
-		}.excute(checker));
-          System.out.println(map);
-*/      	
-        	memberService.add(member);
-        	result.put("status", "success");
+        String email = member.getEmail();
+        count = memberService.emailCheck(email);
+        System.out.println(count);
+        if(count == 0) {
+	       	memberService.add(member);
+	    	result.put("status", "success");
+        }
         return result;
     }
     
@@ -87,10 +91,12 @@ public class MemberController {
         return result;
     }
     
-    @RequestMapping("login/{id}")
-    public Object view(@PathVariable String id) throws Exception {
+    @RequestMapping(value = "login/{email}", method = RequestMethod.POST, consumes="application/json")
+    public Map<?, ?> view(@PathVariable String email, @RequestBody Member member) throws Exception {
         HashMap<String,Object> data = new HashMap<>();
-        data.put("member", memberService.get(id));
+        System.out.println(email);
+        System.out.println(member.getPassword());
+        
         return data;
     }
 
