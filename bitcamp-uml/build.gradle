@@ -1,0 +1,11 @@
+plugins {
+    id 'eclipse' 
+    id 'java'
+}
+
+compileJava {
+    // 컴파일 할 때 소스 파일의 인코딩 옵션을 추가할 것이다.
+    //예) javac-encoding=UTF8 Hello.java
+    options.encoding = 'UTF-8'
+}
+

@@ -24,8 +24,8 @@ public class MemberService {
         return memberDao.selectList(params);
     }
 
-    public Member get(String id) {
-        return memberDao.selectOne(id);
+    public int get(String email, String password) {
+        return memberDao.selectOne(email, password);
     }
 
     // 메서드에 @Transactional 애노테이션을 붙이면,

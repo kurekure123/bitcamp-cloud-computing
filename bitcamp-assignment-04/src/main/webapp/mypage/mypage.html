@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Admin</title>
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+<style>
+	.dropdown-size{
+		text-align: right;
+	}
+	.bizcard-info-size{
+		width: 65%;
+		margin-top: 20px;
+	}
+	.btn-light{
+		border: 1px solid #ced4da;
+	}
+	.index-border{
+		margin-top: 10px;
+		border-right: 1px solid #eee;
+		min-height: 600px;
+	}
+	footer{
+		background: black;
+	}
+	footer > div.container {
+		height: 200px;
+	}
+	.prev-btn{
+		width: 20%;		
+		border-radius: 20px 20px;
+	}
+	.next-btn{
+
+		width: 20%;
+		border-radius: 20px 20px;
+	}
+	.card{
+	    float: left;
+	    margin-bottom: 2rem;
+	    border: 1px solid gray;
+	}
+	.dropdown{
+		text-align: right;
+	}
+
+	.wrapper {
+    display: flex;
+    align-items: stretch;
+	}
+
+	#sidebar.active {
+	    margin-left: -250px;
+	}
+	#sidebar {
+	    min-width: 250px;
+	    max-width: 250px;
+	    min-height: 80vh;
+	}
+	a[data-toggle="collapse"] {
+    position: relative;
+	}
+	.btn  .dropdown-toggle::after {
+	    display: block;
+	    position: absolute;
+	    top: 50%;
+	    right: 20px;
+	    transform: translateY(-50%);
+	}
+
+	@media (max-width: 768px) {
+	    #sidebar {
+	        margin-left: -250px;
+	    }
+	    #sidebar.active {
+	        margin-left: 0;
+	    }
+	}
+
+	@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+	body {
+	    font-family: 'Poppins', sans-serif;
+	    background: #fafafa;
+	}
+
+	p {
+	    font-family: 'Poppins', sans-serif;
+	    font-size: 1.1em;
+	    font-weight: 300;
+	    line-height: 1.7em;
+	    color: #999;
+	}
+
+	a, a:hover, a:focus {
+	    color: inherit;
+	    text-decoration: none;
+	    transition: all 0.3s;
+	}
+
+	#sidebar {
+	    /* don't forget to add all the previously mentioned styles here too */
+	    background: #7386D5;
+	    color: #fff;
+	    transition: all 0.3s;
+	}
+
+	#sidebar .sidebar-header {
+	    padding: 20px;
+	    background: #6d7fcc;
+	}
+
+	#sidebar ul.components {
+	    padding: 20px 0;
+	    border-bottom: 1px solid #47748b;
+	}
+
+	#sidebar ul p {
+	    color: #fff;
+	    padding: 10px;
+	}
+
+	#sidebar ul li a {
+	    padding: 10px;
+	    font-size: 1.1em;
+	    display: block;
+	}
+	#sidebar ul li a:hover {
+	    color: #7386D5;
+	    background: #fff;
+	}
+
+	#sidebar ul li.active > a, a[aria-expanded="true"] {
+	    color: #fff;
+	    background: #6d7fcc;
+	}
+	ul ul a {
+	    font-size: 0.9em !important;
+	    padding-left: 30px !important;
+	    background: #6d7fcc;
+	}
+	#test2{
+		height: 100%;
+	}
+	.nav-container{
+	 	width: 100%;
+	}
+	#content{
+		width: 100%;
+	}
+	.site-wrapper-inner{
+		width: 100%;
+		height: 70%;
+		display: table;
+		margin-bottom: 30px;
+	}
+	.cover-container{
+		display: table-cell;
+		vertical-align: middle;
+	}
+</style>
+</head>
+<body>
+
+	<header></header>
+	<div class="wrapper">
+	    <!-- Sidebar -->
+	    <nav id="sidebar" class="">
+	    	<div id="sidebar-list" class="">
+		        <div class="sidebar-header">
+		            <h3>MY PAGE</h3>
+		        </div>
+		        <ul class="list-unstyled components">
+		            <li class="active">
+		                <a href="#">Home</a>
+		            </li>
+		            <li class="">
+		                <a href="#">About</a>
+		            </li>
+		            <li class="">
+		                <a href="#">Pages</a>
+		            </li>
+		            <li class="">
+		                <a href="#">Portfolio</a>
+		            </li>
+		        </ul>
+	        </div>
+	    </nav>
+	    <div id="content">
+		    <nav class="nnavbar navbar-expand-md navbar-dark bg-dark">
+		        <div class="container-fluid">
+		            <button type="button" id="sidebarCollapse" class="navbar-toggler d-lg-none">
+		                <span class="navbar-toggler-icon"></span>
+		            </button>
+		             <a id="nav-title" href="#" class="navbar-brand">name 님 환영합니다 :)</a>
+		        </div>
+		    </nav>
+			<div id="test2" class="">
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<footer>
+		
+	</footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function () {
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+       
+    });
+     $('div#test2').load('form.html');
+	 $('footer').load('footer.html');
+});
+	//$('header').load('header.html');
+ 	
+ </script>
+</body>
+</html>

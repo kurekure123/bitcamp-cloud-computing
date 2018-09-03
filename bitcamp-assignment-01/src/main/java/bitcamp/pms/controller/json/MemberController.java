@@ -91,13 +91,20 @@ public class MemberController {
         return result;
     }
     
-    @RequestMapping(value = "login/{email}", method = RequestMethod.POST, consumes="application/json")
-    public Map<?, ?> view(@PathVariable String email, @RequestBody Member member) throws Exception {
-        HashMap<String,Object> data = new HashMap<>();
-        System.out.println(email);
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public Map<?, ?> view(/*@PathVariable String email,*/ Member member, HttpSession session) throws Exception {
+    	System.out.println("컨트롤러 로그인파트 진입");
+    	String email = member.getEmail();
+    	String password = member.getPassword();
+        HashMap<String,Object> result = new HashMap<>();
+        System.out.println(email +" / " + password);
         System.out.println(member.getPassword());
         
-        return data;
+        if(memberService.get(email, password) == 1) {
+        	result.put("status", "success");
+        }
+        
+        return result;
     }
 
 }

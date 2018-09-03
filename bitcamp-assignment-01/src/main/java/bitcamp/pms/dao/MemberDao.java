@@ -13,7 +13,7 @@ import bitcamp.pms.domain.Member;
 public interface MemberDao{
 
     List<Member> selectList(Map<String,Object> params);
-    Member selectOne(String id);
+    int selectOne(String email, String password);
     int update(Member member);
     int delete(String id);
     int checkEmail(String email);

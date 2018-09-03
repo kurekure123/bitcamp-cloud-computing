@@ -72,24 +72,30 @@
 function moveAdd(){
     location.href = 'add.html';
 }
-
 var data = null;
-$(loginBtn).on('click', e=>{
-    alert('test')
-    var email = $('#eEmail').val();
-    var json = {
-           email : email ,
-           password : $('#ePassword').val()
+$(loginBtn).click(function(){
+    sessionStorage.setItem("email", $('#eEamil').val());
+    var value = sessionStorage.getItem("email");
+   alert(value);
+    if($('#eEmail').val() == ''){
+        alert('이메일 주소를 입력해주세요');
+        return;
+    }else if($('#ePassword').val() == ''){
+        alert('패스워드를 입력해주세요');
+        return;
     }
-    $.ajax({
-        method : 'POST',
-        data : JSON.stringify(json),
-        dataType : 'json',
-        contentType : 'application/json',
-        success : x =>{
-            alert('섭세스' + x)
-        }
-    })
+    $.post(serverApiAddr+'/json/member/login', {
+        email : $('#eEmail').val(),
+        password : $('#ePassword').val()
+    }, 
+    function(result){
+        if(result.status == 'success'){
+            location.href ='view.html';
+        }else{
+            alert('이메일 혹은 패스워드가 일치하지 않습니다.');
+            location.reload();
+        } 
+    }, 'json')
 });
 
     

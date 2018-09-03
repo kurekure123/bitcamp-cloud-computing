@@ -1,0 +1,37 @@
+<div class="container-test">
+		<div class="card-container">
+   			<div id="card-flipper" class="card-flipper">
+	   			<div class="card-front">
+	   				<div id="content">
+	   					 <div id="c-title" >
+		   					<h3>COMPAY NAME</h3>
+		   					<br>
+		   					<h5>Name : YOUR NAME</h5>
+		   					<h5>Position : YOUR POSITION</h5>
+	   					</div>
+	   				</div>
+	   			</div>
+	   			<div class="card-back">
+		   				<div class="c-detail">
+		   					<h5>Mob : Your Mobile</h5>
+		   					<h5>Tel : Your PhoneNum</h5>
+		   					<h5>Fax : Your Fax</h5>
+		   					<h5>Email : Your Email</h5>
+		   				</div>	
+	   				
+	   			</div>
+   			</div>
+   		</div>
+   </div>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+
+   		 $('.card-flipper').click(function(){
+   		 	if($(this).css('transform') == 'none'){
+   		 		$(this).css("transform", "rotateY(180deg)");
+   		 	}else {
+   		 		$(this).css("transform", "");
+   		 	}
+   		 })
+</script>

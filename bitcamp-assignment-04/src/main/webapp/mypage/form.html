@@ -1,0 +1,70 @@
+<div class="site-wrapper-inner contents-wrapper">	
+	<div class="cover-container mid-content">
+		<div class="container bizcard-info dropdown-size">
+		  <div class="dropdown">
+		    <button type="button" class="btn dropdown-toggle btn-light" data-toggle="dropdown">
+		      항목 추가
+		    </button>
+		    <div id="add-info" class="dropdown-menu btn-light" >
+		      <div id="1" class="dropdown-item">Facebook</div>
+		      <div id="2" class="dropdown-item" href="#">Instagram</div>
+		      <div id="3" class="dropdown-item" href="#">Company name</div>
+		      <div id="4" class="dropdown-item" href="#">Fax</div>
+		      <div id="5" class="dropdown-item" href="#">Web Site</div>
+		    </div>
+		  </div>
+		</div>
+		<div class="container bizcard-info bizcard-info-size ">
+			<form id="info-form">
+				<div class="form-group">
+				  <label for="eEmail">이메일:</label>
+				  <input type="text" class="form-control" id="eEmail">
+				</div>
+				<div class="form-group">
+				  <label for="eName">이름:</label>
+				  <input type="text" class="form-control" id="eName">
+				</div>
+				<div class="form-group">
+				  <label for="ePhone">연락처:</label>
+				  <input type="text" class="form-control" id="ePhone">
+				</div>	
+			</form>			
+		</div>
+		<div class="d-flex">
+			<button id="prev-btn" class="btn btn-secondary mr-auto prev-btn">PREV</button>
+			<button id="select-card" class="btn btn-secondary next-btn">NEXT</button>
+		</div>
+	</div>
+ </div>		
+
+			
+ <script>
+ 	function checkdouble(){
+ 		var face = false;
+ 	}
+
+ 	$('#add-info').click((e)=>{
+ 		var click_id = e.target.getAttribute('id');
+ 		var text = $(`#${click_id}`).text();
+ 		var form_id = text.replace(' ', '');
+
+ 		if($(`#e${form_id}`).length === 0){
+			if(click_id !== '' && click_id !== undefined){
+				$('#info-form').append(`\
+				<div id="e${form_id}-form" class="form-group"> \
+				  <label for="e${form_id}">${text}</label> \
+				  <input type="text" class="form-control" id="e${form_id}"> \
+				</div>`);
+			}
+		}else {
+			alert(text + '항목을 이미 추가하셨습니다.');
+		}
+ 	});
+
+ 	$('#select-card').click(()=>{
+ 		alert('test');
+ 		$('div .site-wrapper-inner contents-wrapper').remove();
+		$('div#test2').load('cardlist.html');
+ 		//location.href('cardlist.html');
+ 	});
+ </script>
